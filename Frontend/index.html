@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votación</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <div class="cards-container">
+    <!-- Carta para inscribir candidato -->
+    <div class="card" id="votar-inscribir">
+      <h3>Inscribir Candidato</h3>
+      <p>Selecciona esta opción para inscribir un nuevo candidato en la votación.</p>
+      <button onclick="irAInscripcion()">Inscribir Candidato</button>
+    </div>
+
+    <!-- Carta para votar -->
+    <div class="card" id="votacion">
+      <h3>Votación</h3>
+      <p>Selecciona tu candidato para votar.</p>
+      <button onclick="irAVotacion()">Votar</button>
+    </div>
+
+    <!-- Carta para ver los resultados de la votación -->
+    <div class="card" id="resultados">
+      <h3>Ver Resultados de Votación</h3>
+      <p>Consulta los resultados finales de la votación.</p>
+      <button onclick="verResultados()">Ver Resultados</button>
+      <div id="resultados-voto"></div>
+    </div>
+  </div>
+
+  <!-- Formulario para inscribir candidato -->
+  <div id="formulario-inscripcion" style="display: none;">
+    <h3>Inscripción de Candidato</h3>
+    <form id="form-candidato" class="formulario">
+      <label for="nombre">Nombre del Candidato:</label>
+      <input type="text" id="nombre" required><br><br>
+
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" required></textarea><br><br>
+
+      <label for="imagen">URL de la Imagen:</label>
+      <input type="url" id="imagen" required oninput="mostrarImagen()"><br><br>
+
+      <!-- Área para mostrar la imagen del candidato -->
+      <div id="imagen-preview" style="display:none;">
+        <h4>Vista previa de la imagen:</h4>
+        <img id="candidato-imagen" src="" alt="Imagen del candidato" width="150" />
+      </div>
+
+      <button type="submit">Inscribir Candidato</button>
+    </form>
+    <button onclick="cerrarFormularioInscripcion()">Cancelar</button>
+  </div>
+
+  <!-- Formulario para votar -->
+  <div id="formulario-votacion" style="display: none;">
+    <h3>Votación</h3>
+    <p>Selecciona tu candidato:</p>
+    <form id="form-voto" class="formulario">
+      <label for="candidato">Candidato:</label>
+      <select id="candidato" required>
+        <!-- Opciones de candidatos generadas dinámicamente -->
+      </select>
+      <br><br>
+      <button type="submit">Votar</button>
+    </form>
+    <button onclick="cerrarFormularioVotacion()">Cancelar</button>
+  </div>
+
+  <!-- Importar archivo de JavaScript -->
+  <script src="./index.js"></script>
+</body>
+</html>
